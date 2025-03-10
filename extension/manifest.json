@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "The name of your extension",
-  "description": "The description of your extension",
+  "name": "Babepedia Scraper",
   "version": "1.0",
+  "description": "Extracts favorite performers from Babepedia and exports to CSV.",
+  "permissions": ["activeTab", "tabs", "scripting", "storage", "downloads"],
+  "host_permissions": ["https://www.babepedia.com/*"],
   "icons": {
     "16": "icons/icon.png",
     "32": "icons/icon.png",
@@ -13,19 +15,26 @@
     "service_worker": "background.js"
   },
   "action": {
+ 
+    "default_popup": "popup.html",
+ 
     "default_icon": {
       "16": "icons/icon.png",
       "32": "icons/icon.png",
       "48": "icons/icon.png",
       "128": "icons/icon.png"
-    },
-    "permissions": ["tabs", "activeTab"]
-  },
+    } 
+   },
+
   "content_scripts": [
     {
       "js": ["./content.js"],
       "matches": ["*://google.com/*"],
       "run_at": "document_end"
-    }
+    },
+    {
+      "matches": ["https://www.babepedia.com/favorites/*"],
+      "js": ["content.js"]
+    }    
   ]
 }

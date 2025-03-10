@@ -1,9 +1,7 @@
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-console.log("hello world!");
-/******/ })()
-;
-//# sourceMappingURL=content.js.map
+function extractPerformers() {
+  let performers = [];
+  document.querySelectorAll("table.wikitable td a").forEach(link => {
+      performers.push(link.innerText.trim());
+  });
+  return performers;
+}
